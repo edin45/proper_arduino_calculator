@@ -202,7 +202,7 @@ void keyPressed(int row, int col){
         new_calc += seperate_calculations[x];
       }
 
-      //Serial.print(" new_calc: " + new_calc + " ");
+      //Serial.print(" new_calc: " + new_calc + " "); 
 
       String done_calc = String(calcPass(new_calc));
 
@@ -251,6 +251,16 @@ void keyPressed(int row, int col){
       // temp_num += layout[row][col];
       // ////////Serial.print(calculation + " - ");
       cursor_row++;
+    }else if(layout[row][col] == '0' && keyDown[3][3] >= 1) {
+      if(calculation == "") {
+        lcd.clear();
+      }
+      lcd.setCursor(cursor_row, cursor_col);
+      lcd.print(".");
+      calculation += ".";
+      // temp_num += layout[row][col];
+      // ////////Serial.print(calculation + " - ");
+      cursor_row++;
     }else if(layout[row][col] != 'x'){
       if(calculation == "") {
         lcd.clear();
@@ -286,7 +296,7 @@ void keyPressed(int row, int col){
     cursor_col = 0;
   }
 
-  if(cursor_row > 16 && cursor_col != 1) {
+  if(cursor_row >= 16 && cursor_col != 1) {
     cursor_row = 0;
     cursor_col = 1;
   }
