@@ -56,7 +56,7 @@ void setup(){
 
   // lcd.print("Hello World");
 
-  Serial.begin(9600);
+ //Serial.begin(9600);
   
   // //////Serial.print("Hello World\n");
 
@@ -101,6 +101,8 @@ void keyPressed(int row, int col){
   // //////Serial.print(keyDown[3][3]);
     // lcd.setCursor(cursor_row,cursor_col);
     if(layout[row][col] == 'e') {
+
+     //Serial.println(calculation);
       
       String seperate_calculations[calculation.length()];
       String seperate_calculations_temp[calculation.length()];
@@ -207,6 +209,7 @@ void keyPressed(int row, int col){
       String done_calc = String(calcPass(new_calc));
 
       lcd.clear();
+      lcd.setCursor(0, 0);
       lcd.print(done_calc);
 
       if(digitalRead(5) == HIGH) {
@@ -289,7 +292,7 @@ void keyPressed(int row, int col){
   // }
 
   if(cursor_row < 0) {
-    cursor_row = -1;
+    cursor_row = 0;
   }
 
   if(cursor_col < 0) {
